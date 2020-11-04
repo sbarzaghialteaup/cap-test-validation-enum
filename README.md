@@ -16,6 +16,16 @@ Function `hello` implemented in `world.js` do:
     });
 ```
 
+`cds -v`:
+```
+@sap/cds: 4.3.0
+@sap/cds-compiler: 1.45.0
+@sap/cds-dk: 3.1.4
+@sap/cds-foss: 2.2.0
+@sap/cds-reflect: 2.13.3
+@sap/cds-runtime: 2.6.0
+Node.js: v12.16.3
+```
 
 # Tests
 ## 1° oData, not existing Author
