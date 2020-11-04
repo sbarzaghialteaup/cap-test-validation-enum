@@ -1,7 +1,17 @@
-### Create Book
+### Test 1° - Create Book with not existing author
 POST http://localhost:4004/Catalog/Books HTTP/1.1
 Content-Type: application/json
 
 {
-    "enum": "T"
+    "enum": "B",
+    "author_ID": 2
+}
+
+### Test 2° - Create Book with not valid enum
+POST http://localhost:4004/Catalog/Books HTTP/1.1
+Content-Type: application/json
+
+{
+    "enum": "T",
+    "author_ID": 1
 }
