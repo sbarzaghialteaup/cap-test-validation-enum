@@ -3,7 +3,7 @@ module.exports = (say) => {
         const tx = cds.transaction(req);
 
         try {
-            const Books = cds.entities.Books;
+            const Books = cds.services["CatalogService"].entities.Books;
 
             await tx.create(Books).entries({
                 enum: "T",
