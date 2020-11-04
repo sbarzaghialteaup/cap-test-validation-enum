@@ -2,7 +2,8 @@
 
 Entity `Books`:
 - has element `enum` with `@assert.range enum { F; B; };`
-- has element `author` with association to `Authors`, `Authors` has only one record with `ID = 1`
+- has element `author` with association to `Authors`
+- `Authors` has only one record with `ID = 1`
 
 Function `hello` implemented in `world.js` do:
 
