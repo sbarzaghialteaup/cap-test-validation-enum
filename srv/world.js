@@ -1,9 +1,11 @@
 module.exports = (say) => {
     say.on("hello", async (req) => {
-        const tx = cds.transaction(req);
+        const catalogService = cds.services["CatalogService"];
+
+        const tx = catalogService.transaction(req);
 
         try {
-            const Books = cds.services["CatalogService"].entities.Books;
+            const Books = catalogService.entities.Books;
 
             await tx.create(Books).entries({
                 enum: "T",
@@ -14,9 +16,20 @@ module.exports = (say) => {
 
             return "OK";
         } catch (error) {
-            await tx.rollback();
             console.error("Validation or on commit error", error);
-            return error.toString();
+            await tx.rollback();
+
+            const Logs = catalogService.entities.Logs;
+
+            const txLogs = catalogService.transaction(req);
+
+            await txLogs.create(Logs).entries({
+                error: JSON.stringify(error),
+            });
+
+            await txLogs.commit();
+
+            req.reject(400, error);
         }
     });
 };

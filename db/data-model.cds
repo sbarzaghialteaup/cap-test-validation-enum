@@ -1,3 +1,4 @@
+using { managed } from '../node_modules/@sap/cds/common';
 using {cuid} from '@sap/cds/common';
 
 namespace my.bookshop;
@@ -13,4 +14,8 @@ entity Books : cuid {
         B;
     };
     author : Association to one Authors;
+}
+
+entity Logs : cuid, managed {
+    error : String;
 }
